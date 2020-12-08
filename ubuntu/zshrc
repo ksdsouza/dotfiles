@@ -1,0 +1,51 @@
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+
+_type_exists() {
+    if [ $(type $1 &> /dev/null) ]; then
+        return 0
+    fi
+    return 1
+}
+
+# if the init script doesn't exist
+if ! zgen saved; then
+
+  # specify plugins here
+  zgen oh-my-zsh
+
+  # generate the init script from plugins above
+  zgen save
+fi
+
+# Plugins
+zgen load zsh-users/zsh-syntax-highlighting
+zgen load zsh-users/zsh-autosuggestions
+zgen load rupa/z
+
+# starship
+eval "$(starship init zsh)"
+
+if $(_type_exists "kubectl"); then
+    zgen load oh-my-zsh plugins/kubectl
+    source <(kubectl completion zsh)
+    source <(helm completion zsh)
+fi
+
+
+# Aliases and Functions
+alias cdw="cd ~/Developer"
+alias ls="exa --icons"
+alias l="exa -la --icons"
+
+alias k="kubectl"
+alias klog="kubectl logs --follow"
+alias kpod="kubectl get pods"
+
+kshell () {
+    kubectl exec $1 -it -- bash
+}
+
+alias fixup='git commit --fixup HEAD'
+
+export TERM='xterm-256color'

@@ -1,0 +1,32 @@
+[[layers]]
+name = "colorscheme"
+
+[options]
+    colorscheme = "onedark"
+    colorscheme_bg = "dark"
+    enable_guicolors = true
+    statusline_separator = "nil"
+    statusline_iseparator = "bar"
+    buffer_index_type = 4
+    windows_index_type = 3
+    enable_tabline_filetype_icon = false
+    enable_statusline_mode = false
+    statusline_unicode_symbols = false
+    vimcompatible = true
+
+[[layers]]
+name = 'autocomplete'
+auto_completion_return_key_behavior = "complete"
+auto_completion_tab_key_behavior = "cycle"
+
+[[layers]]
+name = 'shell'
+default_position = 'top'
+default_height = 30
+
+[[layers]]
+name = "lang#python"
+
+[[layers]]
+name = "git"
+git-plugin = "gina"
