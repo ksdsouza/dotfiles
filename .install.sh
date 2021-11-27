@@ -1,2 +1,2 @@
 fisher install jethrokuan/fzf
-fihser install jethrokuan/z
+fisher install jethrokuan/z
