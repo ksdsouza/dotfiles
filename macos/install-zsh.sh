@@ -25,14 +25,6 @@ else
     install_zsh
 fi
 
-read -p "Set zsh as default shell (Y/n)?" default_shell_choice
-case "$default_shell_choice" in
-    n|N);;
-    *) 
-    sudo chsh -s /usr/local/bin/zsh "$user"
-    ;;
-esac
-
 curl -sS https://starship.rs/install.sh | sh
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
@@ -45,3 +37,11 @@ if [ -f "~/.config/starship.toml" ]; then
 else
     mv ./resources/starship.toml ~/.config/starship.toml
 fi
+
+read -p "Set zsh as default shell (Y/n)?" default_shell_choice
+case "$default_shell_choice" in
+    n|N);;
+    *) 
+    sudo chsh -s /usr/local/bin/zsh "$user"
+    ;;
+esac

@@ -56,3 +56,11 @@ if fish --version; then
 else
     install_fish
 fi
+
+read -p "Set fish as default shell (Y/n)?" default_shell_choice
+case "$default_shell_choice" in
+    n|N);;
+    *) 
+    sudo chsh -s `which fish` "$user"
+    ;;
+esac
