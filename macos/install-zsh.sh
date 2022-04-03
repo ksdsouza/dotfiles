@@ -12,11 +12,6 @@ function install_zsh {
     # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
     cp resources/zshrc.template ~/.zshrc
-
-    zsh -c '
-
-    '
-
 }
 
 if zsh --version &> /dev/null; then

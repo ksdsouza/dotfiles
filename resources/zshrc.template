@@ -1,14 +1,18 @@
 
 source "${HOME}/.zgen/zgen.zsh"
 
-if [[ ! -f ~/.zpm/zpm.zsh ]]; then
-  git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
-fi
-source ~/.zpm/zpm.zsh
+source "${HOME}/.zgen/zgen.zsh"
 
-zpm load \
-    zsh-users/zsh-autosuggestions \
-    zsh-users/zsh-syntax-highlighting \
-    agkozak/zsh-z
+# if the init script doesn't exist
+if ! zgen saved; then
+
+  # specify plugins here
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-syntax-highlighting
+  zgen load agkozak/zsh-z
+
+  # generate the init script from plugins above
+  zgen save
+fi   
 
 eval "$(starship init zsh)"
