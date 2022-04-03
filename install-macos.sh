@@ -38,9 +38,9 @@ echo $SHELL_ARG
 
 case "$SHELL_ARG" in
     zsh)
-        ./install-zsh.sh
+        ./macos/install-zsh.sh
         ;;
     fish)
-        ./install-fish.sh
+        ./macos/install-fish.sh
         ;;
 esac
