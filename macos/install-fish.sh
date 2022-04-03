@@ -12,11 +12,11 @@ function install_fish {
     echo "Installing fish plugins:"
     fish -c '
         curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-        fisher install jorgebucaran/nvm.fish
-        fisher install jethrokuan/z
-        fisher install evanlucas/fish-kubectl-completions
-        fisher install oh-my-fish/plugin-bang-bang
-        fisher install edc/bass
+        fisher install \
+            jorgebucaran/nvm.fish \
+            jethrokuan/z \
+            evanlucas/fish-kubectl-completions \
+            oh-my-fish/plugin-bang-bang edc/bass
     '
     if fzf --version &> /dev/null; then
         fisher install PatrickF1/fzf.fish
