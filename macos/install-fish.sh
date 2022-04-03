@@ -7,17 +7,7 @@ function uninstall_fish {
     echo "Old zshrc file backed up to ~/.zshrc.backup"
 }
 
-function install_fish {
-    brew install fish
-    echo "Installing fish plugins:"
-    fish -c '
-        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-        fisher install \
-            jorgebucaran/nvm.fish \
-            jethrokuan/z \
-            evanlucas/fish-kubectl-completions \
-            oh-my-fish/plugin-bang-bang edc/bass
-    '
+function install_fzf {
     if fzf --version &> /dev/null; then
         fisher install PatrickF1/fzf.fish
     else
@@ -31,7 +21,9 @@ function install_fish {
             ;;
         esac
     fi
+}
 
+function install_grc {
     if grc --version &> /dev/null; then
         fisher install oh-my-fish/plugin-grc
     else
@@ -45,6 +37,23 @@ function install_fish {
             ;;
         esac
     fi
+}
+
+function install_fish {
+    brew install fish
+    echo "Installing fish plugins:"
+    fish -c '
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+        fisher install \
+            jorgebucaran/nvm.fish \
+            jethrokuan/z \
+            evanlucas/fish-kubectl-completions \
+            oh-my-fish/plugin-bang-bang edc/bass
+    '
+
+    install_fzf
+    install_grc
+
     echo 'Installing vi key bindings:'
     echo 'fish_vi_key_bindings' >> ~/.config/fish/config.fish
 }
