@@ -7,7 +7,6 @@ function uninstall_zsh {
     echo "Old zshrc file backed up to ~/.zshrc.backup"
 }
 
-
 function install_fzf {
     if fzf --version &> /dev/null; then
         echo 'zgenom load unixorn/fzf-zsh-plugin' >> ~/.zshrc
@@ -27,7 +26,6 @@ function install_fzf {
 
 function install_zsh {
     brew install zsh
-    # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
     cp resources/zshrc.template ~/.zshrc
     install_fzf
