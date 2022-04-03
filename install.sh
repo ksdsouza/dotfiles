@@ -1,7 +1,7 @@
 #!/bin/bash
 case "$(uname)" in
     "Darwin")
-        ./install-macos.sh $@
+        ./macos/install-macos.sh $@
         ;;
     "Linux")
         echo "Not Implemented!"
