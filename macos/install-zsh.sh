@@ -12,6 +12,15 @@ function install_zsh {
     # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
     cp resources/zshrc.template ~/.zshrc
+
+    zsh -c '
+        zpm load \
+            zsh-users/zsh-autosuggestions \
+            zsh-users/zsh-syntax-highlighting \
+            agkozak/zsh-z
+            @omz/vi-mode
+    '
+
 }
 
 if zsh --version; then
@@ -28,7 +37,6 @@ else
 fi
 
 curl -sS https://starship.rs/install.sh | sh
-echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
 if [ -f "~/.config/starship.toml" ]; then
     read -p "Starship config file already exists. Replace (y/N)?" choice
