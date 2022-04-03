@@ -8,14 +8,16 @@ function uninstall_fish {
 
 function install_fish {
     brew install fish
-    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-    fisher install jorgebucaran/nvm.fish
-    fisher install jethrokuan/z
-    fisher install PatrickF1/fzf.fish
-    fisher install oh-my-fish/plugin-grc
-    fisher install evanlucas/fish-kubectl-completions
-    fisher install oh-my-fish/plugin-bang-bang
-    fisher install edc/bass
+    fish -c '
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+        fisher install jorgebucaran/nvm.fish
+        fisher install jethrokuan/z
+        fisher install PatrickF1/fzf.fish
+        fisher install oh-my-fish/plugin-grc
+        fisher install evanlucas/fish-kubectl-completions
+        fisher install oh-my-fish/plugin-bang-bang
+        fisher install edc/bass
+    '
 }
 
 if fish --version; then
