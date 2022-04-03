@@ -1,18 +1,16 @@
-
-source "${HOME}/.zgen/zgen.zsh"
-
-source "${HOME}/.zgen/zgen.zsh"
+source "${HOME}/.zgenom/zgenom.zsh"
 
 # if the init script doesn't exist
-if ! zgen saved; then
+if ! zgenom saved; then
 
   # specify plugins here
-  zgen load zsh-users/zsh-autosuggestions
-  zgen load zsh-users/zsh-syntax-highlighting
-  zgen load agkozak/zsh-z
+  zgenom load zsh-users/zsh-autosuggestions
+  zgenom load zsh-users/zsh-syntax-highlighting
+  zgenom load zsh-users/zsh-completions
+  zgenom load agkozak/zsh-z
 
   # generate the init script from plugins above
-  zgen save
+  zgenom save
 fi   
 
 eval "$(starship init zsh)"
