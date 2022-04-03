@@ -9,7 +9,7 @@ function uninstall_zsh {
 
 function install_zsh {
     brew install zsh
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
     cp resources/zshrc.template ~/.zshrc
 }
