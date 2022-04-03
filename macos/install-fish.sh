@@ -25,6 +25,7 @@ function install_fish {
             y|Y)
             brew install fzf
             fish -c 'fisher install PatrickF1/fzf.fish'
+            ;;
             *)
             ;;
         esac
@@ -38,6 +39,7 @@ function install_fish {
             y|Y)
             brew install grc
             fish -c 'fisher install oh-my-fish/plugin-grc'
+            ;;
             *)
             ;;
         esac
