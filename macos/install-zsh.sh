@@ -14,17 +14,13 @@ function install_zsh {
     cp resources/zshrc.template ~/.zshrc
 
     zsh -c '
-        zpm load \
-            zsh-users/zsh-autosuggestions \
-            zsh-users/zsh-syntax-highlighting \
-            agkozak/zsh-z
-            @omz/vi-mode
+
     '
 
 }
 
-if zsh --version; then
-    read -p "Clear initial zsh installation (Y/n)?" clear_choice
+if zsh --version &> /dev/null; then
+    read -p "Clear initial zsh installation (Y/n)? " clear_choice
     case "$clear_choice" in
         n|N);;
         *) 
@@ -39,7 +35,7 @@ fi
 curl -sS https://starship.rs/install.sh | sh
 
 if [ -f "~/.config/starship.toml" ]; then
-    read -p "Starship config file already exists. Replace (y/N)?" choice
+    read -p "Starship config file already exists. Replace (y/N)? " choice
     case "$choice" in 
         y|Y ) mv ./resources/starship.toml ~/.config/starship.toml;;
         * ) ;;
@@ -48,7 +44,7 @@ else
     mv ./resources/starship.toml ~/.config/starship.toml
 fi
 
-read -p "Set zsh as default shell (Y/n)?" default_shell_choice
+read -p "Set zsh as default shell (Y/n)? " default_shell_choice
 case "$default_shell_choice" in
     n|N);;
     *) 

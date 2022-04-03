@@ -6,4 +6,9 @@ if [[ ! -f ~/.zpm/zpm.zsh ]]; then
 fi
 source ~/.zpm/zpm.zsh
 
+zpm load \
+    zsh-users/zsh-autosuggestions \
+    zsh-users/zsh-syntax-highlighting \
+    agkozak/zsh-z
+
 eval "$(starship init zsh)"
