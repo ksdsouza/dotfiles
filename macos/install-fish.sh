@@ -1,3 +1,4 @@
+#!/bin/bash
 user=$(whoami)
 
 function uninstall_fish {
@@ -17,7 +18,7 @@ function install_fish {
         fisher install oh-my-fish/plugin-bang-bang
         fisher install edc/bass
     '
-    if fzf --version; then
+    if fzf --version &> /dev/null; then
         fisher install PatrickF1/fzf.fish
     else
         read -p "Install fzf (command line fuzzy finder) (y/N)?" fzf_choice
@@ -31,7 +32,7 @@ function install_fish {
         esac
     fi
 
-    if grc --version; then
+    if grc --version &> /dev/null; then
         fisher install oh-my-fish/plugin-grc
     else
         read -p "Install grc (generic command colourizer) (y/N)?" grc_choice
@@ -44,9 +45,11 @@ function install_fish {
             ;;
         esac
     fi
+    echo 'Installing vi key bindings:'
+    echo 'fish_vi_key_bindings' >> ~/.config/fish/config.fish
 }
 
-if fish --version; then
+if fish --version &> /dev/null; then
     read -p "Clear initial fish installation (Y/n)?" clear_choice
     case "$clear_choice" in
         n|N);;
@@ -58,6 +61,20 @@ if fish --version; then
 else
     install_fish
 fi
+
+curl -sS https://starship.rs/install.sh | sh
+echo 'eval "$(starship init zsh)"' >> ~/.config/fish/config.fish
+
+if [ -f "~/.config/starship.toml" ]; then
+    read -p "Starship config file already exists. Replace (y/N)?" choice
+    case "$choice" in 
+        y|Y ) mv ./resources/starship.toml ~/.config/starship.toml;;
+        * ) ;;
+    esac 
+else
+    mv ./resources/starship.toml ~/.config/starship.toml
+fi
+
 
 read -p "Set fish as default shell (Y/n)?" default_shell_choice
 case "$default_shell_choice" in
