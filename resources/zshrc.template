@@ -1,0 +1,19 @@
+source "${HOME}/.zgenom/zgenom.zsh"
+
+# if the init script doesn't exist
+if ! zgenom saved; then
+
+  # specify plugins here
+  zgenom load zsh-users/zsh-autosuggestions
+  zgenom load zsh-users/zsh-syntax-highlighting
+  zgenom load zsh-users/zsh-completions
+  zgenom load agkozak/zsh-z
+  zgenom load jeffreytse/zsh-vi-mode
+
+  # generate the init script from plugins above
+  zgenom save
+fi   
+
+eval "$(starship init zsh)"
+
+setopt auto_cd
