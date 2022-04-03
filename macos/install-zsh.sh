@@ -7,11 +7,30 @@ function uninstall_zsh {
     echo "Old zshrc file backed up to ~/.zshrc.backup"
 }
 
+
+function install_fzf {
+    if fzf --version &> /dev/null; then
+        echo 'zgen load unixorn/fzf-zsh-plugin' >> ~/.zshrc
+        fisher install PatrickF1/fzf.fish
+    else
+        read -p "Install fzf (command line fuzzy finder) (y/N)? " fzf_choice
+        case "$fzf_choice" in
+            y|Y)
+            brew install fzf
+            echo 'zgen load unixorn/fzf-zsh-plugin' >> ~/.zshrc
+            ;;
+            *)
+            ;;
+        esac
+    fi
+}
+
 function install_zsh {
     brew install zsh
     # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
     cp resources/zshrc.template ~/.zshrc
+    install_fzf
 }
 
 if zsh --version &> /dev/null; then

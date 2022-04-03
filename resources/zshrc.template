@@ -16,3 +16,5 @@ if ! zgen saved; then
 fi   
 
 eval "$(starship init zsh)"
+
+setopt auto_cd
