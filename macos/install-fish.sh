@@ -21,7 +21,7 @@ function install_fish {
     if fzf --version &> /dev/null; then
         fisher install PatrickF1/fzf.fish
     else
-        read -p "Install fzf (command line fuzzy finder) (y/N)?" fzf_choice
+        read -p "Install fzf (command line fuzzy finder) (y/N)? " fzf_choice
         case "$fzf_choice" in
             y|Y)
             brew install fzf
@@ -35,7 +35,7 @@ function install_fish {
     if grc --version &> /dev/null; then
         fisher install oh-my-fish/plugin-grc
     else
-        read -p "Install grc (generic command colourizer) (y/N)?" grc_choice
+        read -p "Install grc (generic command colourizer) (y/N)? " grc_choice
         case "$grc_choice" in
             y|Y)
             brew install grc
@@ -50,7 +50,7 @@ function install_fish {
 }
 
 if fish --version &> /dev/null; then
-    read -p "Clear initial fish installation (Y/n)?" clear_choice
+    read -p "Clear initial fish installation (Y/n)? " clear_choice
     case "$clear_choice" in
         n|N);;
         *) 
@@ -63,7 +63,7 @@ else
 fi
 
 curl -sS https://starship.rs/install.sh | sh
-echo 'eval "$(starship init zsh)"' >> ~/.config/fish/config.fish
+echo 'starship init fish | source' >> ~/.config/fish/config.fish
 
 if [ -f "~/.config/starship.toml" ]; then
     read -p "Starship config file already exists. Replace (y/N)?" choice
